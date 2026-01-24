@@ -4,32 +4,61 @@ import { useEffect, useState } from "react";
 import { config } from "@/portfolio.config";
 
 export default function AgeTicker() {
-    const [age, setAge] = useState("");
+  const [time, setTime] = useState({
+    years: "--",
+    months: "--",
+    days: "--",
+  });
 
-    useEffect(() => {
-        const birthDate = new Date(config.birthDate);
+  useEffect(() => {
+    const birthDate = new Date(config.birthDate);
 
-        const updateAge = () => {
-            const now = new Date()
-            const diff = now.getTime() - birthDate.getTime();
-            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
-            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    const updateAge = () => {
+      const now = new Date();
+      const diff = now.getTime() - birthDate.getTime();
 
-            setAge(
-                `${years}Y ${String(months).padStart(2, "0")}M ${String(days).padStart(2, "0")}D ${String(hours).padStart(2, "0")}H ${String(minutes).padStart(2, "0")}M ${String(seconds).padStart(2, "0")}S`
-            )
-        }
-        const timer = setInterval(updateAge, 1000);
-        updateAge();
+      const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+      const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+      const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
 
-        return () => clearInterval(timer)
+      setTime({
+        years: String(years),
+        months: String(months).padStart(2, "0"),
+        days: String(days).padStart(2, "0"),
+      });
+    };
 
-    })
-    if (!age) return <span className="opacity-50">CALCULATING...</span>;
+    const timer = setInterval(updateAge, 1000);
+    updateAge();
 
-    return <span>{age}</span>;
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="flex items-end gap-3 font-mono">
+      {/* YEAR */}
+      <div className="flex flex-col items-center leading-none">
+        <span className="text-xl font-bold text-primary">{time.years}</span>
+        <span className="text-[10px] text-secondary tracking-widest uppercase">Years</span>
+      </div>
+
+      {/* SEPARATOR */}
+      <div className="h-6 w-[1px] bg-secondary/20" />
+
+      {/* MONTH */}
+      <div className="flex flex-col items-center leading-none">
+        <span className="text-xl font-bold text-foreground">{time.months}</span>
+        <span className="text-[10px] text-secondary tracking-widest uppercase">Months</span>
+      </div>
+
+      {/* SEPARATOR */}
+      <div className="h-6 w-[1px] bg-secondary/20" />
+
+      {/* DAY */}
+      <div className="flex flex-col items-center leading-none">
+        <span className="text-xl font-bold text-foreground">{time.days}</span>
+        <span className="text-[10px] text-secondary tracking-widest uppercase">Days</span>
+      </div>
+    </div>
+  );
 }

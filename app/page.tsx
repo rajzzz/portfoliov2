@@ -11,7 +11,7 @@ export default function Home() {
   // 1. RESTORED: The Scroll Hooks
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"],
+    offset: ["start 20%", "end 100%"],
   });
 
   // 2. RESTORED: The Glow Logic (0% to 100% height)
@@ -52,21 +52,21 @@ export default function Home() {
       <div 
         id="timeline" 
         ref={containerRef} // IMPORTANT: The spy is attached here
-        className="min-h-screen w-full max-w-3xl px-6 pb-32 snap-start pt-20"
+        className="w-full max-w-3xl px-6 snap-start pt-20"
       >
-        <div className="relative w-full ml-4 sm:ml-8">
+        <div className="relative w-full ml-4 sm:ml-8 pb-32">
           
           {/* --- THE LINES --- */}
           
           {/* 1. STATIC TRACK (Always visible, dark grey) */}
           {/* Centered at left-3 (12px). Width 4px. */}
-          <div className="absolute left-3 top-2 bottom-0 w-1 bg-(--primary) rounded-full" />
+          <div className="absolute left-3 top-4 bottom-0 w-1 bg-(--foreground) rounded-full" />
 
           {/* 2. DYNAMIC GLOW (Fills on scroll) */}
           {/* Same position, lays ON TOP of the static track */}
           <motion.div 
             style={{ height: lineHeight }}
-            className="absolute left-3 top-2 w-1 bg-primary shadow-[0_0_20px_var(--primary)] rounded-full z-10"
+            className="absolute left-3 top-4 bottom-0 w-1 bg-foreground shadow-[0_0_20px_var(--primary)] rounded-full"
           />
 
           {/* --- THE ITEMS --- */}
