@@ -23,7 +23,7 @@ export default function BottomNav() {
                 "px-6 py-2 rounded-full text-sm font-medium transition-all border border-transparent relative",
                 isActive 
                   ? "bg-background text-primary active-nav-item" // Active State
-                  : "text-secondary hover:bg-foreground/10 hover:text-primary"   // Inactive State
+                  : "text-secondary hover:bg-foreground/10 hover:text-secondary"   // Inactive State
               )}
             >
               {route.label.toUpperCase()}

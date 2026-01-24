@@ -87,7 +87,7 @@ projects: [
       title: "Trainee at CSRBOX(IBM Skillsbuild)",
       date: "July - August 2025",
       description: "Worked with AI agents and various IBM Granite models",
-      tags: ["Machine Learning", "Python", "Data Science"],
+      tags: ["Generative AI", "Python", "Data Science"],
     },
   ],
 };

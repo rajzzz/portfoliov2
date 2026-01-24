@@ -7,7 +7,7 @@
   --foreground-rgb: 15, 20, 14;
   --primary: #8fc855;    /* Imperial Gold */
   --primary-rgb: 161, 188, 152;
-  --secondary: #a8a29e  /* Stone Grey */
+  --secondary: #a8a29e;  /* Stone Grey */
   --border: #e7e5e4;
 }
 
@@ -19,7 +19,7 @@
   --foreground-rgb: 241, 243, 224;
   --primary: #A1BC98;    /* Imperial Gold */
   --primary-rgb: 161, 188, 152;
-  --secondary: #a8a29e  /* Stone Grey */
+  --secondary: #a8a29e;  /* Stone Grey */
   --border: #e7e5e4;
 }
 
@@ -53,4 +53,15 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
+}
+
+/* View Transition API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-image-pair(root) {
+  isolation: isolate;
 }

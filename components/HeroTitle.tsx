@@ -11,10 +11,10 @@ export default function HeroTitle() {
       className="text-center"
     >
       <h1 className="text-6xl sm:text-9xl font-bold tracking-tight mb-6">
-        Hello.
+        Hello There!
       </h1>
       <p className="text-xl sm:text-2xl text-secondary max-w-lg mx-auto leading-relaxed">
-        I build systems. <br />
+        I build stuff. <br />
         <span className="text-primary">Full-stack developer</span> & <span className="text-primary">Cybersecurity enthusiast</span>.
       </p>
     </motion.div>
