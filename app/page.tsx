@@ -14,7 +14,7 @@ export default function Home() {
 
         {/* Simple scroll hint */}
         <div className="absolute bottom-24 flex flex-col items-center gap-2 text-secondary/50 animate-bounce">
-          <span className="text-xs font-mono tracking-widest uppercase">Start</span>
+          <span className="text-xs font-mono tracking-widest uppercase">Experience</span>
           <ChevronDown className="w-6 h-6" />
         </div>
       </section>

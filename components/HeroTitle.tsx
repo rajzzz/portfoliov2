@@ -14,8 +14,7 @@ export default function HeroTitle() {
         Hello There!
       </h1>
       <p className="text-xl sm:text-2xl text-secondary max-w-lg mx-auto leading-relaxed">
-        I build stuff. <br />
-        <span className="text-primary">Full-stack developer</span> & <span className="text-primary">Cybersecurity enthusiast</span>.
+        I am Raj, your next hire. <br />
       </p>
     </motion.div>
   );

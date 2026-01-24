@@ -20,7 +20,7 @@ export default function BottomNav() {
               key={route.path}
               href={route.path}
               className={clsx(
-                "px-6 py-2 rounded-full text-sm font-medium transition-all border border-transparent relative",
+                "px-6 py-2 rounded-full text-sm font-medium transition-all border-[2] border-foreground relative",
                 isActive 
                   ? "bg-background text-primary active-nav-item" // Active State
                   : "text-secondary hover:bg-foreground/10 hover:text-secondary"   // Inactive State
