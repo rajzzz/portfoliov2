@@ -2,27 +2,25 @@
 
 /* 1. Light Mode (Default) */
 :root {
-  /* Paper/Parchment Style */
-  --background: #f4f1ea; 
-  --foreground: #1a1a1a; 
-  --foreground-rgb: 26, 26, 26;
-  --primary: #d97706;    /* Imperial Gold */
-  --primary-rgb: 217, 119, 6;
-  --secondary: #a8a29e;  /* Stone Grey */
+  --background: #F1F3E0; 
+  --foreground: #0f140e; 
+  --foreground-rgb: 15, 20, 14;
+  --primary: #A1BC98;    /* Imperial Gold */
+  --primary-rgb: 161, 188, 152;
+  --secondary: #a8a29e  /* Stone Grey */
   --border: #e7e5e4;
 }
 
 /* 2. Dark Mode (Applied via class) */
 /* CHANGED: Replaced @media query with the .dark class selector */
 .dark {
-  /* Fog of War / Cyber Style */
-  --background: #0a0a0a; 
-  --foreground: #ededed; 
-  --foreground-rgb: 237, 237, 237;
-  --primary: #3b82f6;    /* Neon Blue */
-  --primary-rgb: 59, 130, 246;
-  --secondary: #525252;  
-  --border: #262626;
+  --foreground: #F1F3E0; 
+  --background: #0a0d09; 
+  --foreground-rgb: 241, 243, 224;
+  --primary: #A1BC98;    /* Imperial Gold */
+  --primary-rgb: 161, 188, 152;
+  --secondary: #a8a29e  /* Stone Grey */
+  --border: #e7e5e4;
 }
 
 /* ... keep the rest of your global styles ... */

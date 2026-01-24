@@ -5,7 +5,7 @@ export const config = {
   name: "Raj Singh",
   birthDate: "2003-12-29T11:10:00", // YYYY-MM-DD - Adjust this to your actual birthdate
 
-  avatar: "/me.jpg",
+  avatar: "/me3.jpg",
 
   // Social Stats (Top Left)
   socials: [
@@ -25,7 +25,7 @@ export const config = {
   ],
 projects: [
     {
-      name: "Flashcard SaaS",
+      name: "Web to Anki",
       description: "AI-powered flashcard generator via browser extension.",
       tech: ["FastAPI", "Python", "Manifest V3"],
       link: "https://github.com/yourusername/flashcard-ai", // Replace with real link
@@ -60,24 +60,32 @@ projects: [
   ], 
   // Timeline Data (The "Tech Tree")
   timeline: [
+    
     {
       id: 1,
-      title: "Frontend Dev @ Lowfied.com",
-      date: "June 2024",
-      description: "Worked on frontend architecture and UI implementation.",
-      tags: ["React", "Frontend", "Web Dev"],
+      title: "CSE @ GGSIPU",
+      date: "November 2022 - July 2026*",
+      description: "Studying Computer science and engineering at VIPS Pitampura, Delhi",
+      tags: ["Engineering"],
     },
     {
       id: 2,
-      title: "Cybersecurity Internship @ STPI",
-      date: "June 2025",
-      description: "Focused on network security and ethical hacking methodologies.",
-      tags: ["Network Security", "Linux", "Ethical Hacking"],
+      title: "Frontend Dev @ Lowfied.com",
+      date: "June - July 2024",
+      description: "Worked on frontend architecture and UI implementation.",
+      tags: ["React", "Tailwind CSS", "Frontend", "Web Dev"],
     },
     {
       id: 3,
-      title: "Summer Trainee at CSRBOX(IBM Skillsbuild)",
-      date: "August 2025",
+      title: "Summer Intern @ STPI",
+      date: "June - August 2025",
+      description: "Software Technology Parks of India, (an autonomous body under MeitY), Focused on network security and ethical hacking methodologies.",
+      tags: ["Network Security", "Linux", "Owasp Top 10", "BurpSuite", "N-map", "WireShark"],
+    },
+    {
+      id: 4,
+      title: "Trainee at CSRBOX(IBM Skillsbuild)",
+      date: "July - August 2025",
       description: "Worked with AI agents and various IBM Granite models",
       tags: ["Machine Learning", "Python", "Data Science"],
     },
