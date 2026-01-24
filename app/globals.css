@@ -1,26 +1,51 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Light Mode (Political Map Mode Style) */
+  --background: #f4f1ea; /* Parchment-ish off-white */
+  --foreground: #1a1a1a; /* Ink black */
+  --primary: #d97706;    /* Imperial Gold/Orange */
+  --secondary: #a8a29e;  /* Stone Grey */
+  --border: #e7e5e4;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark Mode (Fog of War Style) */
+    --background: #0a0a0a; /* Deep Void */
+    --foreground: #ededed; /* Soft White */
+    --primary: #3b82f6;    /* Diplomatic Blue / Neon Glow */
+    --secondary: #525252;  /* Dark Stone */
+    --border: #262626;
   }
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
+  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll from the custom scrollbar */
+}
+
+/* Custom Minimalist Scrollbar (Right side) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Utility for the glowing line effect */
+.glow-line {
+  box-shadow: 0 0 10px var(--primary);
 }
