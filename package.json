@@ -12,7 +12,7 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "sharp": "^0.33.2",
+    "sharp": "^0.34.5",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.29.0",
