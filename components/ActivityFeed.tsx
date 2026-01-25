@@ -1,63 +1,18 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Dumbbell, Code2, Flame, Music, Terminal } from "lucide-react";
+import { Terminal, Dumbbell, Code2, Flame, Music } from "lucide-react";
 import StatCard from "@/components/StatCard";
-import { StravaStats, LeetCodeStats, DuolingoStats } from "@/lib/fetchers";
+import { getStravaStats, getLeetCodeStats, getDuolingoStats } from "@/lib/fetchers";
 
-interface AboutClientProps {
-  strava: StravaStats | null;
-  leetcode: LeetCodeStats | null;
-  duolingo: DuolingoStats | null;
-}
+export default async function ActivityFeed() {
+  const [strava, leetcode, duolingo] = await Promise.all([
+    getStravaStats(),
+    getLeetCodeStats(),
+    getDuolingoStats()
+  ]);
 
-export default function AboutClient({ strava, leetcode, duolingo }: AboutClientProps) {
-  
-  // Calculate max volume for Strava chart scaling
   const maxVolume = strava ? Math.max(...strava.chartData, 1) : 100;
 
   return (
-    <div className="min-h-screen w-full px-6 pt-24 pb-32 max-w-5xl mx-auto">
-      
-      {/* 1. NEW BIO SECTION */}
-      <motion.div 
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-secondary/20 pb-12"
-      >
-        <div className="md:col-span-2 space-y-6">
-          <h1 className="text-4xl font-bold">
-            The System Architecture
-          </h1>
-          <div className="text-lg text-secondary leading-relaxed space-y-4">
-            <p>
-              I view life as a series of optimization problems. Whether it's refactoring 
-              a backend microservice, hitting a PR in the gym, or maintaining a language streak, 
-              I apply the same iterative mindset: <span className="text-primary font-semibold">Consistency over Intensity.</span>
-            </p>
-            <p>
-              My background in <span className="text-primary font-semibold">Computer Science</span> drives 
-              my professional work, but my curiosity spills over into music production, 
-              linguistics, and physical training. I don't just build software; I build systems for living.
-            </p>
-          </div>
-        </div>
-        
-        {/* Quick Tech Stack Pill List */}
-        <div className="space-y-4">
-          <h3 className="text-sm font-mono text-secondary uppercase tracking-widest mb-4">Core Stack</h3>
-          <div className="flex flex-wrap gap-2">
-            {["FastAPI","Flask", "Next.js", "Python", "Linux", "Bash", "Neovim", "C++"].map((tech) => (
-              <span key={tech} className="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-md text-sm text-secondary hover:text-primary hover:border-primary/50 transition-colors cursor-default">
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-
-      {/* 2. LIVE TELEMETRY GRID */}
+    <>
       <h2 className="text-xl font-bold mb-8 flex items-center gap-2">
         <Terminal className="w-5 h-5 text-primary" />  Activities
       </h2>
@@ -65,16 +20,14 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         {/* --- STRAVA WIDGET --- */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
+        <div className="h-full">
           <StatCard 
             title="Fitness" 
             icon={Dumbbell} 
             value={strava ? strava.weeklyVolume : "Loading..."} 
             subtext={strava ? strava.lastActivity : "Syncing..."}
           >
-            {/* Visual: Actual Volume Chart */}
             <div className="flex flex-col w-full h-full px-2 pb-1">
-              {/* Bars */}
               <div className="flex-1 flex items-end gap-1 border-b border-secondary/10 pb-1">
                 {strava ? (
                   strava.chartData.map((val, i) => {
@@ -90,17 +43,15 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
                     );
                   })
                 ) : (
-                  // Skeleton
-                  [40, 60, 45, 70, 50, 30, 55].map((h, i) => (
-                    <div key={i} className="flex-1 bg-secondary/10 rounded-t-sm animate-pulse" style={{ height: `${h}%` }} />
+                  // Empty state if null
+                  Array(7).fill(0).map((_, i) => (
+                    <div key={i} className="flex-1 bg-secondary/10 rounded-t-sm animate-pulse" style={{ height: "15%" }} />
                   ))
                 )}
               </div>
               
-              {/* Day Labels */}
               <div className="flex justify-between px-0.5 pt-1">
                 {Array(7).fill(0).map((_, i) => {
-                  // Calculate day letter (Today is index 6)
                   const d = new Date();
                   d.setDate(d.getDate() - (6 - i));
                   const letter = d.toLocaleDateString("en-US", { weekday: "narrow" });
@@ -113,10 +64,10 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
               </div>
             </div>
           </StatCard>
-        </motion.div>
+        </div>
 
         {/* --- LEETCODE WIDGET --- */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
+        <div className="h-full">
           <StatCard 
             title="LeetCode" 
             icon={Code2} 
@@ -124,7 +75,6 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
             subtext={leetcode ? leetcode.ranking : "Fetching..."}
             color="text-yellow-500"
           >
-            {/* Visual: Difficulty Stack */}
             <div className="flex flex-col gap-1 w-full h-full justify-center px-2">
               <div className="flex items-center gap-2 text-[10px] text-secondary">
                 <span className="w-8">Easy</span>
@@ -151,10 +101,10 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
               </div>
             </div>
           </StatCard>
-        </motion.div>
+        </div>
 
         {/* --- DUOLINGO WIDGET --- */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
+        <div className="h-full">
           <StatCard 
             title="Duolingo" 
             icon={Flame} 
@@ -166,10 +116,10 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
                <Flame className="w-12 h-12 text-orange-500 animate-bounce" fill="currentColor" />
             </div>
           </StatCard>
-        </motion.div>
+        </div>
 
-        {/* --- MUSIC WIDGET (Static) --- */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="h-full">
+        {/* --- MUSIC WIDGET --- */}
+        <div className="h-full">
           <StatCard 
             title="Production" 
             icon={Music} 
@@ -191,9 +141,9 @@ export default function AboutClient({ strava, leetcode, duolingo }: AboutClientP
               ))}
             </div>
           </StatCard>
-        </motion.div>
+        </div>
 
       </div>
-    </div>
+    </>
   );
 }

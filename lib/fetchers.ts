@@ -73,12 +73,9 @@ export async function getStravaStats(): Promise<StravaStats | null> {
     const activities = await activitiesRes.json();
 
     // C. Process Data
-    // Broadened filter for debugging/completeness
     const relevantActivities = activities.filter((a: any) =>
       ["Run", "TrailRun", "WeightTraining", "Ride", "Walk", "Hike", "Workout", "Crossfit"].includes(a.type)
     );
-    
-    console.log(`[Strava Debug] Found ${relevantActivities.length} relevant activities out of ${activities.length} total.`);
 
     if (relevantActivities.length === 0) {
       return { lastActivity: "No recent activity", weeklyVolume: "0 hrs", chartData: Array(7).fill(0) };
@@ -88,7 +85,6 @@ export async function getStravaStats(): Promise<StravaStats | null> {
     relevantActivities.sort((a: any, b: any) => new Date(b.start_date).getTime() - new Date(a.start_date).getTime());
 
     const lastAct = relevantActivities[0];
-    // Use local time for display
     const lastDate = new Date(lastAct.start_date_local);
     const today = new Date();
     const isYesterday =
@@ -114,23 +110,15 @@ export async function getStravaStats(): Promise<StravaStats | null> {
     for (let i = 0; i < 7; i++) {
       const d = new Date();
       d.setDate(d.getDate() - (6 - i));
-      // Construct YYYY-MM-DD using local time components to match Strava's start_date_local
       const year = d.getFullYear();
       const month = String(d.getMonth() + 1).padStart(2, '0');
       const day = String(d.getDate()).padStart(2, '0');
       const dateString = `${year}-${month}-${day}`;
       last7DaysMap.set(dateString, i);
     }
-    
-    console.log("[Strava Debug] Date Map:", Array.from(last7DaysMap.keys()));
 
     relevantActivities.forEach((act: any) => {
-      // Use local date string from Strava (format: "YYYY-MM-DDTHH:MM:SSZ")
-      // We just take the date part "YYYY-MM-DD"
       const actDate = act.start_date_local.split("T")[0];
-      
-      console.log(`[Strava Debug] Activity: ${act.type} on ${actDate} (${act.moving_time}s)`);
-      
       if (last7DaysMap.has(actDate)) {
         const index = last7DaysMap.get(actDate)!;
         chartData[index] += (act.moving_time || 0) / 60; // Minutes
@@ -139,8 +127,6 @@ export async function getStravaStats(): Promise<StravaStats | null> {
 
     const weeklyMinutes = chartData.reduce((a, b) => a + b, 0);
     const weeklyVolume = `${Math.round(weeklyMinutes / 60 * 10) / 10} hrs`;
-    
-    console.log("[Strava Debug] Final Chart Data:", chartData);
 
     return {
       lastActivity: lastActivityStr,
