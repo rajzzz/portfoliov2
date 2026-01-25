@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { config } from "@/portfolio.config";
 
 export default function TimelineSystem() {
@@ -12,7 +12,14 @@ export default function TimelineSystem() {
         offset: ["start center", "end end"],
     });
 
-    const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+    // Smooth scroll on iOS/Safari
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
+    const lineScale = useTransform(smoothProgress, [0, 1], [0, 1]);
     const timelineData = [...config.timeline].reverse();
 
     return (
@@ -21,6 +28,10 @@ export default function TimelineSystem() {
             id="timeline"
             ref={containerRef} // IMPORTANT: The spy is attached here
             className="w-full max-w-3xl px-6 snap-start pt-20"
+            style={{
+                WebkitOverflowScrolling: 'touch',
+                transform: 'translateZ(0)'
+            }}
         >
             <div className="relative w-full ml-4 sm:ml-8 pb-32">
 
@@ -33,8 +44,12 @@ export default function TimelineSystem() {
                 {/* 2. DYNAMIC GLOW (Fills on scroll) */}
                 {/* Same position, lays ON TOP of the static track */}
                 <motion.div
-                    style={{ height: lineHeight }}
+                    style={{ scaleY: lineScale,
+                        transformOrigin: "top"
+                    }}
                     className="absolute left-3 top-4 bottom-0 w-1 bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
+    
+                    viewport={{ once: false }}
                 />
 
                 {/* --- THE ITEMS --- */}
