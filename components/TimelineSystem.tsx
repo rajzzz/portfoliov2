@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { config } from "@/portfolio.config";
-import { clamp } from "date-fns";
 
 export default function TimelineSystem() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -15,8 +14,8 @@ export default function TimelineSystem() {
 
     // Smooth scroll on iOS/Safari
     const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
+        stiffness: 200,
+        damping: 40,
         restDelta: 0.001
     });
 
@@ -42,14 +41,16 @@ export default function TimelineSystem() {
 
                 {/* 2. DYNAMIC GLOW (Fills on scroll) */}
                 {/* Same position, lays ON TOP of the static track */}
-                <motion.div
-                    style={{ scaleY: lineScale,
-                        transformOrigin: "top",
-                        height: 'calc(100% -1 =rem)'
-                    }}
-                    className="absolute left-3 top-4 bottom-0 w-1 bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
-                    initial={{backfaceVisibility: "hidden"}}
-                />
+                <div className="absolute left-3 top-4 w-1" style={{ height: 'calc(100% - 8rem)' }}>
+                    <motion.div
+                        style={{ 
+                            scaleY: lineScale,
+                            transformOrigin: "top"
+                        }}
+                        className="w-full h-full bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
+                        initial={{ backfaceVisibility: "hidden" }}
+                    />
+                </div>
 
                 {/* --- THE ITEMS --- */}
                 <div className="flex flex-col gap-24 py-4">
