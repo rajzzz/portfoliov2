@@ -1,6 +1,19 @@
+import Image from "next/image";
 import { Terminal, Dumbbell, Code2, Flame, Music } from "lucide-react";
 import StatCard from "@/components/StatCard";
 import { getStravaStats, getLeetCodeStats, getDuolingoStats } from "@/lib/fetchers";
+
+// Custom Owl Icon using local asset
+const OwlIcon = ({ className }: { className?: string }) => (
+  <div className={`relative ${className}`}>
+    <Image 
+      src="/duo.svg" 
+      alt="Duolingo Owl" 
+      fill 
+      className="object-contain" 
+    />
+  </div>
+);
 
 export default async function ActivityFeed() {
   const [strava, leetcode, duolingo] = await Promise.all([
@@ -107,10 +120,10 @@ export default async function ActivityFeed() {
         <div className="h-full">
           <StatCard 
             title="Duolingo" 
-            icon={Flame} 
+            icon={OwlIcon} 
             value={duolingo ? `${duolingo.streak} 🔥` : "Loading..."} 
             subtext={duolingo ? `${duolingo.language}` : "Fetching..."}
-            color="text-orange-500"
+            color="text-green-500"
           >
             <div className="flex items-center justify-center h-full">
                <Flame className="w-12 h-12 text-orange-500 animate-bounce" fill="currentColor" />

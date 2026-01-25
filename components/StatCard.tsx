@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode, ElementType } from "react";
 import { LucideIcon } from "lucide-react";
 
 interface StatCardProps {
   title: string;
-  icon: LucideIcon;
+  icon: LucideIcon | ElementType;
   value: string;
   subtext: string;
   children?: ReactNode; // For graphs, charts, or extra visuals

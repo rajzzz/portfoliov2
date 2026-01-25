@@ -11,18 +11,14 @@ export default function AboutBio() {
     >
       <div className="md:col-span-2 space-y-6">
         <h1 className="text-4xl font-bold">
-          The System Architecture
+          About Me
         </h1>
         <div className="text-lg text-secondary leading-relaxed space-y-4">
           <p>
-            I view life as a series of optimization problems. Whether it's refactoring 
-            a backend microservice, hitting a PR in the gym, or maintaining a language streak, 
-            I apply the same iterative mindset: <span className="text-primary font-semibold">Consistency over Intensity.</span>
+            I am an Engineer. I like to make and break things.
           </p>
           <p>
-            My background in <span className="text-primary font-semibold">Computer Science</span> drives 
-            my professional work, but my curiosity spills over into music production, 
-            linguistics, and physical training. I don't just build software; I build systems for living.
+            Other than <span className="font-semibold">softwares</span> I am very curious about robotics, music, health, history and Geography.
           </p>
         </div>
       </div>

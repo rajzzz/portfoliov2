@@ -1,5 +1,18 @@
-import { Terminal, Dumbbell, Code2, Flame, Music } from "lucide-react";
+import Image from "next/image";
+import { Terminal, Dumbbell, Code2, Music } from "lucide-react";
 import StatCard from "@/components/StatCard";
+
+// Custom Owl Icon using local asset
+const OwlIcon = ({ className }: { className?: string }) => (
+  <div className={`relative ${className}`}>
+    <Image 
+      src="/duo.svg" 
+      alt="Duolingo Owl" 
+      fill 
+      className="object-contain" 
+    />
+  </div>
+);
 
 export default function ActivitySkeleton() {
   return (
@@ -37,7 +50,7 @@ export default function ActivitySkeleton() {
 
         {/* Duolingo Skeleton */}
         <div className="h-full">
-          <StatCard title="Duolingo" icon={Flame} value="..." subtext="Loading..." color="text-orange-500">
+          <StatCard title="Duolingo" icon={OwlIcon} value="..." subtext="Loading..." color="text-green-500">
              <div className="flex items-center justify-center h-full animate-pulse">
                 <div className="w-10 h-10 bg-secondary/10 rounded-full" />
              </div>
