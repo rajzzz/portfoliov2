@@ -48,7 +48,7 @@ projects: [
       name: "Web to Anki",
       description: "AI-powered flashcard generator via browser extension.",
       tech: ["FastAPI", "SQLAlchemy", "Manifest V3"],
-      link: "https://github.com/yourusername/flashcard-ai", // Replace with real link
+      link: "https://chromewebstore.google.com/detail/web-to-anki/opbaagipfhncddobbmojaegmdpnmlenf?hl=en", // Replace with real link
       type: "SaaS", // e.g., "SaaS", "Tool", "Infrastructure"
       image: "/w2a.gif" // <--- Add this (Put actual gif in /public folder)
     },
@@ -57,17 +57,17 @@ projects: [
       name: "SmartScape",
       description: "Urban infrastructure planning assistant. Showcased at IBM AI summit 2025",
       tech: ["Flask", "GCP", "Vertex AI"],
-      link: "#", 
+      link: "https://smartscape.in", 
       type: "AI Agent",
-      image: "/2.gif"
+      image: "/sc.gif"
     },
 {
       name: "Web Atlas",
       description: "Interactive 3D globe with raycasting and real-time geographic statistics.",
       tech: ["Three.js", "WebGL", "TopoJSON", "REST API"],
-      link: "#", 
+      link: "https://web-atlas.onrender.com/", 
       type: "Interactive Web",
-      image: "/3.gif" // Ensure you have a placeholder gif for this
+      image: "/cs.gif" // Ensure you have a placeholder gif for this
     },
   ], 
   // Timeline Data (The "Tech Tree")
