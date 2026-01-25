@@ -26,7 +26,7 @@ export default function AboutPage() {
           </p>
           <p>
             My philosophy is simple: I am happiest when I am building towards a massive goal 
-            or connecting closely with people. I treat discipline like a game mechanic—whether it's 
+            or connecting closely with people. I treat discipline like a game mechanic—whether it is 
             optimizing my Neovim config or hitting the gym.
           </p>
         </div>

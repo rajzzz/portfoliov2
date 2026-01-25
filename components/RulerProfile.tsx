@@ -9,7 +9,7 @@ export default function RulerProfile() {
       
       {/* 1. THE PORTRAIT */}
       {/* REMOVED: bg-secondary/10 (The white dots cause) */}
-      <div className="relative z-20 w-16 h-16 rounded-full border-3 border-background overflow-hidden shadow-xl ring-1 ring-secondary/20 group cursor-pointer hover:ring-primary transition-all">
+      <div className="relative z-20 w-16 h-16 rounded-full overflow-hidden shadow-xl ring-4 ring-secondary/20 ring-offset-background group cursor-pointer hover:ring-primary transition-all">
         
         {/* OPTIMIZED IMAGE: Loads instantly, no blur/dots */}
         <Image 
@@ -24,7 +24,7 @@ export default function RulerProfile() {
         {/* Status Dot */}
       </div>
 
-        <div className="relative bottom-[-25] ml-[-25] w-4 h-4 bg-green-500 border-3 border-background rounded-full z-30" />
+        <div className="relative bottom-[-25] ml-[-25] w-4 h-4 bg-green-500 border-[3px] border-background rounded-full z-30" />
 
       {/* 2. THE STATS BAR */}
       <div className="-ml-4 pl-8 pr-6 py-2 h-12 bg-background/90 backdrop-blur-sm border border-secondary/20 rounded-r-full shadow-sm flex items-center gap-4">

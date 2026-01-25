@@ -43,7 +43,7 @@ export default function AgeTicker() {
       </div>
 
       {/* SEPARATOR */}
-      <div className="h-6 w-[1px] bg-secondary/20" />
+      <div className="h-6 w-px bg-secondary/20" />
 
       {/* MONTH */}
       <div className="flex flex-col items-center leading-none">
@@ -52,7 +52,7 @@ export default function AgeTicker() {
       </div>
 
       {/* SEPARATOR */}
-      <div className="h-6 w-[1px] bg-secondary/20" />
+      <div className="h-6 w-px bg-secondary/20" />
 
       {/* DAY */}
       <div className="flex flex-col items-center leading-none">

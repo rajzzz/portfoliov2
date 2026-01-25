@@ -19,12 +19,13 @@ export default function ProjectCard({ project }: ProjectProps) {
       {/* 1. GIF/IMAGE AREA */}
       {project.image && (
         <div className="relative w-full h-40 mb-4 rounded-lg overflow-hidden border border-secondary/10 group-hover:border-primary/20 transition-colors">
-          {/* Using a standard img tag for GIFs usually works better than Next/Image for simple animation handling, 
-              but standard Next <Image> is fine if configured. Let's use standard <img> for simplicity with GIFs. */}
-          <img 
+          {/* Using Next/Image for optimization */}
+          <Image 
             src={project.image} 
             alt={project.name} 
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" 
+            fill
+            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           
           {/* Overlay gradient so text remains readable if it overlaps */}
