@@ -46,7 +46,7 @@ socials: [
 projects: [
     {
       name: "Web to Anki",
-      description: "AI-powered flashcard generator via browser extension.",
+      description: "Makes flashcards for you while you read via a browser extension.",
       tech: ["FastAPI", "SQLAlchemy", "Manifest V3"],
       link: "https://chromewebstore.google.com/detail/web-to-anki/opbaagipfhncddobbmojaegmdpnmlenf?hl=en", // Replace with real link
       type: "SaaS", // e.g., "SaaS", "Tool", "Infrastructure"
