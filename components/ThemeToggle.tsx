@@ -38,16 +38,17 @@ export default function ThemeToggle() {
       return;
     }
 
+    const x = e.clientX;
+    const y = e.clientY;
+
     const transition = document.startViewTransition(() => {
       setTheme(newTheme);
-      document.documentElement.classList.toggle("dark", newTheme === "dark");
-      localStorage.setItem("theme", newTheme);
     });
 
     transition.ready.then(() => {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      localStorage.setItem("theme", newTheme);
       // Get the click coordinates
-      const x = e.clientX;
-      const y = e.clientY;
 
       // Calculate the radius to the furthest corner
       const right = window.innerWidth - x;
