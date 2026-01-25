@@ -12,7 +12,7 @@ interface StatCardProps {
 
 export default function StatCard({ title, icon: Icon, value, subtext, children, color }: StatCardProps) {
   return (
-    <div className="group relative p-5 rounded-2xl bg-secondary/5 border border-secondary/10 overflow-hidden transition-all hover:border-primary/50 hover:bg-secondary/10">
+    <div className="group relative p-5 rounded-2xl bg-secondary/5 border border-secondary/10 overflow-hidden transition-all hover:border-primary/50 hover:bg-secondary/10 flex flex-col h-full">
       
       {/* Header */}
       <div className="flex justify-between items-start mb-3">
@@ -37,7 +37,7 @@ export default function StatCard({ title, icon: Icon, value, subtext, children, 
       </div>
 
       {/* Footer / Subtext */}
-      <div className="mt-3 pt-3 border-t border-secondary/10 flex justify-between items-center">
+      <div className="mt-2 pt-3 border-t border-secondary/10 flex justify-between items-center">
         <span className="text-xs text-secondary font-medium">
           {subtext}
         </span>
