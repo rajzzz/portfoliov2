@@ -44,7 +44,8 @@ export default function TimelineSystem() {
                 {/* Same position, lays ON TOP of the static track */}
                 <motion.div
                     style={{ scaleY: lineScale,
-                        transformOrigin: "top"
+                        transformOrigin: "top",
+                        height: 'calc(100% -1 =rem)'
                     }}
                     className="absolute left-3 top-4 bottom-0 w-1 bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
                     initial={{backfaceVisibility: "hidden"}}
