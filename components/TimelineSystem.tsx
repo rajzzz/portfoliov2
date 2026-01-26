@@ -1,27 +1,24 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, animate, scroll } from "framer-motion";
 import { config } from "@/portfolio.config";
 
 export default function TimelineSystem() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const lineRef = useRef<HTMLDivElement>(null);
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start center", "end end"],
-    });
+    useEffect(() => {
+        if (!lineRef.current || !containerRef.current) return;
 
-    // Smooth scroll on iOS/Safari
-    const smoothProgress = useSpring(scrollYProgress, {
-        stiffness: 200,
-        damping: 40,
-        restDelta: 0.001
-    });
+        const controls = animate(lineRef.current, { scaleY: [0, 1] }, { ease: "linear" });
+        
+        return scroll(controls, {
+            target: containerRef.current,
+            offset: ["start center", "end end"]
+        });
+    }, []);
 
-    const lineScale = useTransform(smoothProgress, [0, 1], [0, 1],
-        {clamp: true}
-    );
     const timelineData = [...config.timeline].reverse();
 
     return (
@@ -43,12 +40,12 @@ export default function TimelineSystem() {
                 {/* Same position, lays ON TOP of the static track */}
                 <div className="absolute left-3 top-4 w-1" style={{ height: 'calc(100% - 8rem)' }}>
                     <motion.div
+                        ref={lineRef}
                         style={{ 
-                            scaleY: lineScale,
                             transformOrigin: "top"
                         }}
                         className="w-full h-full bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
-                        initial={{ backfaceVisibility: "hidden" }}
+                        initial={{ backfaceVisibility: "hidden", scaleY: 0 }}
                     />
                 </div>
 
