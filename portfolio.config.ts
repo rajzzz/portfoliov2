@@ -101,5 +101,12 @@ projects: [
       description: "Worked with AI agents and various IBM Granite models",
       tags: ["Generative AI", "Python", "Data Science"],
     },
+    {
+      id: 5,
+      title: "FullStack Engineer at CloserX.ai",
+      date: " from January 2025*",
+      description: "",
+      tags: ["NextJS" , "Tanstack", "Zustland"],
+    },
   ],
 };

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import { useRef, useEffect } from "react";
 import { motion, animate, scroll } from "framer-motion";
@@ -10,7 +10,6 @@ export default function TimelineSystem() {
 
     useEffect(() => {
         if (!lineRef.current || !containerRef.current) return;
-
         const controls = animate(lineRef.current, { scaleY: [0, 1] }, { ease: "linear" });
         
         return scroll(controls, {
@@ -22,7 +21,6 @@ export default function TimelineSystem() {
     const timelineData = [...config.timeline].reverse();
 
     return (
-
         <div
             id="timeline"
             ref={containerRef} // IMPORTANT: The spy is attached here
