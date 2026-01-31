@@ -106,7 +106,7 @@ projects: [
       title: "FullStack Engineer at CloserX.ai",
       date: " from January 2025*",
       description: "",
-      tags: ["NextJS" , "Tanstack", "Zustland"],
+      tags: ["NextJS" , "Tanstack", "Zustand"],
     },
   ],
 };
