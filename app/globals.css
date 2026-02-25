@@ -2,26 +2,32 @@
 
 /* 1. Light Mode (Default) */
 :root {
-  --background: #F1F3E0; 
-  --foreground: #0f140e; 
+  --background: #F1F3E0;
+  --foreground: #0f140e;
   --foreground-rgb: 15, 20, 14;
-  --primary: #8fc855;    /* Imperial Gold */
+  --primary: #8fc855;
+  /* Imperial Gold */
   --primary-rgb: 161, 188, 152;
-  --secondary: #a8a29e;  /* Stone Grey */
+  --secondary: #a8a29e;
+  /* Stone Grey */
   --border: #e7e5e4;
-  --dot-color: #0f140e1a; /* 10% opacity foreground */
+  --dot-color: #0f140e1a;
+  /* 10% opacity foreground */
 }
 
 /* 2. Dark Mode (Applied via class) */
 .dark {
-  --foreground: #F1F3E0; 
-  --background: #0a0d09; 
+  --foreground: #F1F3E0;
+  --background: #0a0d09;
   --foreground-rgb: 241, 243, 224;
-  --primary: #A1BC98;    /* Imperial Gold */
+  --primary: #A1BC98;
+  /* Imperial Gold */
   --primary-rgb: 161, 188, 152;
-  --secondary: #a8a29e;  /* Stone Grey */
+  --secondary: #a8a29e;
+  /* Stone Grey */
   --border: #e7e5e4;
-  --dot-color: #F1F3E01a; /* 10% opacity foreground */
+  --dot-color: #F1F3E01a;
+  /* 10% opacity foreground */
 }
 
 /* ... keep the rest of your global styles ... */
@@ -38,7 +44,7 @@ body {
   background-size: 16px 16px;
   background-attachment: fixed;
   font-family: Arial, Helvetica, sans-serif;
-  overflow-y: scroll; 
+  overflow-y: scroll;
 }
 
 /* Scrollbar Styles */

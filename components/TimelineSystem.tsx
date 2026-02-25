@@ -1,30 +1,35 @@
 "use client"
 
 import { useRef, useEffect } from "react";
-import { motion, animate, scroll } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
+import { motion, animate, scroll, useMotionValue, useMotionValueEvent } from "framer-motion";
 import { config } from "@/portfolio.config";
 
 export default function TimelineSystem() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const lineRef = useRef<HTMLDivElement>(null);
+    const lineRef = useRef<HTMLDivElement>(null); // ✅ kept
 
-    useEffect(() => {
-        if (!lineRef.current || !containerRef.current) return;
-        const controls = animate(lineRef.current, { scaleY: [0, 1] }, { ease: "linear" });
-        
-        return scroll(controls, {
-            target: containerRef.current,
-            offset: ["start center", "end end"]
-        });
-    }, []);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start center", "end end"]
+    });
 
+    const clampedProgress = useMotionValue(0);
+
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        // Only update if the new value is greater than what we have
+        if (latest > clampedProgress.get()) {
+            clampedProgress.set(latest);
+        }
+    });
+    const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
     const timelineData = [...config.timeline].reverse();
 
     return (
         <div
             id="timeline"
             ref={containerRef} // IMPORTANT: The spy is attached here
-            className="w-full max-w-3xl px-6 snap-start pt-20"
+            className="w-full max-w-3xl px-6 snap-start pt-20 overflow-y-scroll"
             style={{
                 WebkitOverflowScrolling: 'touch',
                 transform: 'translateZ(0)'
@@ -39,11 +44,12 @@ export default function TimelineSystem() {
                 <div className="absolute left-3 top-4 w-1" style={{ height: 'calc(100% - 8rem)' }}>
                     <motion.div
                         ref={lineRef}
-                        style={{ 
-                            transformOrigin: "top"
+                        style={{
+                            transformOrigin: "top",
+                            scaleY
                         }}
                         className="w-full h-full bg-(--foreground) shadow-[0_0_20px_var(--primary)] rounded-full"
-                        initial={{ backfaceVisibility: "hidden", scaleY: 0 }}
+                        initial={{ backfaceVisibility: "hidden" }}
                     />
                 </div>
 
