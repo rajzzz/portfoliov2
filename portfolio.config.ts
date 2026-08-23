@@ -47,18 +47,18 @@ export const config = {
     {
       name: "Web to Anki",
       description:
-        "AI-powered SaaS — LLM pipeline extracts web content into Anki flashcards. Manifest V3 extension handling 1,000+ weekly requests. 50k+ impressions, 16 recurring paid users.",
-      tech: ["FastAPI", "Python", "PostgreSQL", "LLM APIs", "Manifest V3"],
-      link: "https://chromewebstore.google.com/detail/web-to-anki/opbaagipfhncddobbmojaegmdpnmlenf?hl=en",
-      type: "SaaS",
-      image: "/w2a.gif",
+        "Makes flashcards for you while you read via a browser extension.",
+      tech: ["FastAPI", "SQLAlchemy", "Manifest V3"],
+      link: "https://chromewebstore.google.com/detail/web-to-anki/opbaagipfhncddobbmojaegmdpnmlenf?hl=en", // Replace with real link
+      type: "SaaS", // e.g., "SaaS", "Tool", "Infrastructure"
+      image: "/w2a.gif", // <--- Add this (Put actual gif in /public folder)
     },
 
     {
       name: "SmartScape",
       description:
-        "Geospatial urban planning assistant leveraging Google Gemini multimodal AI. Ranked Top 4 pan-India at IBM SkillsBuild; showcased at IBM Summit 2025 & AI Impact Global Summit 2026.",
-      tech: ["Flask", "Vertex AI", "GCP", "Google Maps API"],
+        "Urban infrastructure planning assistant. Showcased at IBM AI summit 2025",
+      tech: ["Flask", "GCP", "Vertex AI"],
       link: "https://smartscape.in",
       type: "AI Agent",
       image: "/sc.gif",
@@ -70,7 +70,7 @@ export const config = {
       tech: ["Three.js", "WebGL", "TopoJSON", "REST API"],
       link: "https://web-atlas.onrender.com/",
       type: "Interactive Web",
-      image: "/cs.gif",
+      image: "/cs.gif", // Ensure you have a placeholder gif for this
     },
   ],
   // Timeline Data (The "Tech Tree")
