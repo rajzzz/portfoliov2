@@ -18,7 +18,7 @@ export default function AboutBio() {
             I am an Engineer. I like to make and break things.
           </p>
           <p>
-            Other than <span className="font-semibold">softwares</span> I am very curious about robotics, music, health, history and Geography.
+            Other than <span className="font-semibold">software</span> I am very curious about robotics, music, health, history and Geography.
           </p>
         </div>
       </div>
@@ -27,7 +27,7 @@ export default function AboutBio() {
       <div className="space-y-4">
         <h3 className="text-sm font-mono text-secondary uppercase tracking-widest mb-4">Core Stack</h3>
         <div className="flex flex-wrap gap-2">
-          {["FastAPI","Flask", "Next.js", "Python", "Linux", "Bash", "Neovim", "C++"].map((tech) => (
+          {["TypeScript", "Python", "Next.js", "NestJS", "Django", "FastAPI", "PostgreSQL", "Prisma", "Docker", "Linux"].map((tech) => (
             <span key={tech} className="px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-md text-sm text-secondary hover:text-primary hover:border-primary/50 transition-colors cursor-default">
               {tech}
             </span>
